@@ -7,6 +7,7 @@
 #include "QueryResult.h"
 #include "QueryBase.h"
 #include "Queries.h"
+#include "WordQuery.h"
 
 class Query
 {

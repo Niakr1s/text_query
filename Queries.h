@@ -6,24 +6,9 @@
 #include <memory>
 #include "QueryResult.h"
 #include "TextQuery.h"
-
 class TextQuery;
-class WordQuery;
 class NoQuery;
 class BinaryQuery;
-
-class WordQuery : public QueryBase
-{
-private:
-  std::string word;
-
-public:
-  WordQuery(const std::string &s) : word(s){};
-  ~WordQuery(){};
-
-  QueryResult eval(TextQuery &tq) const override;
-  std::string rep() const override;
-};
 
 class NoQuery : public QueryBase
 {
