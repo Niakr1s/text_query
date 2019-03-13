@@ -1,4 +1,5 @@
 #include "Query.h"
+#include "NoQuery.h"
 
 // members
 QueryResult Query::eval(TextQuery &tq) const
