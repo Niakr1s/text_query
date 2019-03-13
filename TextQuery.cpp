@@ -1,6 +1,9 @@
 #include "TextQuery.h"
 
 #include <sstream>
+#include <fstream>
+#include <iterator>
+#include <iostream>
 
 std::set<size_t> TextQuery::not_lines(const std::string &word)
 {

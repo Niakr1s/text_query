@@ -1,9 +1,10 @@
 #include "QueryResult.h"
 
-std::ostream &QueryResult::print(std::ostream &out)
+#include <iostream>
+
+void QueryResult::print()
 {
-    out << "Result for " << name << ":\n";
+    std::cout << "Result for " << name << ":\n";
     for (auto &i : lines)
-        out << "Line no " << i << ": " << (*text)[i] << "\n";
-    return out;
+        std::cout << "Line no " << i << ": " << (*text)[i] << "\n";
 };

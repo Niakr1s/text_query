@@ -2,7 +2,6 @@
 #define QUERY_H
 
 #include <string>
-#include <memory>
 #include "TextQuery.h"
 #include "QueryResult.h"
 #include "QueryBase.h"

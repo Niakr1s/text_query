@@ -1,10 +1,7 @@
 #if !defined(TEXT_QUERY_H)
 #define TEXT_QUERY_H
 
-#include <iostream>
 #include <vector>
-#include <fstream>
-#include <iterator>
 #include <memory>
 #include <map>
 #include <set>

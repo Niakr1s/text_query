@@ -1,10 +1,7 @@
 #if !defined(QUERYRESULT_H)
 #define QUERYRESULT_H
 
-#include <iostream>
 #include <vector>
-#include <fstream>
-#include <iterator>
 #include <memory>
 #include <set>
 
@@ -22,7 +19,7 @@ public:
               const std::set<size_t> &l) : text(t), name(s), lines(l){};
   ~QueryResult(){};
 
-  std::ostream &print(std::ostream &out = std::cout);
+  void print();
 };
 
 #endif // QUERYRESULT_H
