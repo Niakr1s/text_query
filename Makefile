@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -Wall
 LDFLAGS =
-SRC_PATH = 
+SRC_PATH = src/
 SRCS = $(wildcard $(SRC_PATH)*.cpp)  # get all .cpp in src dir
 
 # making PREFIX
