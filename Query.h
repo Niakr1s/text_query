@@ -1,12 +1,12 @@
-#if !defined(QUERYBASE_H)
-#define QUERYBASE_H
+#if !defined(QUERY_H)
+#define QUERY_H
 
 #include <string>
 #include <memory>
 #include "TextQuery.h"
 #include "QueryResult.h"
-
-class TextQuery;
+#include "QueryBase.h"
+#include "Queries.h"
 
 class Query
 {
@@ -27,4 +27,4 @@ public:
   // Query &operator|(const Query &rhs) const &;
 };
 
-#endif // QUERYBASE_H
+#endif // QUERY_H
