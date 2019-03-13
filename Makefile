@@ -18,6 +18,12 @@ EXECUTABLE = $(PREFIX)main.exe
 
 .PHONY: run release debug build clean
 
+run: release
+	@echo -------------
+	$(EXECUTABLE)
+	@echo -------------
+
+release: CFLAGS := -D NDEBUG $(CFLAGS)
 release: build
 debug: CFLAGS := -g $(CFLAGS)
 debug: build
@@ -28,13 +34,13 @@ $(OBJS): | $(PREFIX)  # create PREFIX path if not exists
 $(PREFIX):
 	mkdir -p $(PREFIX)
 
+DEPS := $(OBJS:.o=.d)
+
+-include $(DEPS)
+
+# -MMD flag create .d file with same name as .o
 $(PREFIX)%.o: $(SRC_PATH)%.cpp  # for each .cpp in src_path making .o in prefix_path
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c -MMD $(CFLAGS) $< -o $@
 
 clean:
 	rm -rf $(RELEASE_PREFIX)* $(DEBUG_PREFIX)*
-
-run: release
-	@echo -------------
-	$(EXECUTABLE)
-	@echo -------------
