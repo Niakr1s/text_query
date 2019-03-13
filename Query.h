@@ -6,8 +6,8 @@
 #include "TextQuery.h"
 #include "QueryResult.h"
 #include "QueryBase.h"
-#include "Queries.h"
 #include "WordQuery.h"
+#include "Query.h"
 
 class Query
 {
