@@ -5,9 +5,10 @@
 
 class OrQuery : public BinaryQuery
 {
+    std::string op;
 
   public:
-    OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r){};
+    OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r), op("|"){};
 
     ~OrQuery(){};
 

@@ -11,11 +11,11 @@ class NoQuery : public QueryBase
 {
 private:
   Query query;
-  // std::string word;
+  std::string op;
 
 public:
   // NoQuery(const std::string &s) : word(s){};
-  NoQuery(const Query &q) : query(q){};
+  NoQuery(const Query &q) : query(q), op("~"){};
 
   ~NoQuery(){};
 

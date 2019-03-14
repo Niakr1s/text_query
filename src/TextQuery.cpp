@@ -5,18 +5,6 @@
 #include <iterator>
 #include <iostream>
 
-std::set<size_t> TextQuery::negate_lines(std::set<size_t> &to_negate)
-{
-    auto ret = all_lines();
-    for (auto &i : to_negate)
-    {
-        auto it = ret.find(i);
-        if (it != ret.end())
-            ret.erase(it);
-    }
-    return ret;
-};
-
 std::set<size_t> TextQuery::all_lines()
 {
     std::set<size_t> ret;

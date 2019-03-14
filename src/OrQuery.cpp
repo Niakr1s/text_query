@@ -10,7 +10,7 @@ QueryResult OrQuery::eval(TextQuery &tq) const
     decltype(ls) diff;
     std::set_union(ls.begin(), ls.end(),
                    rs.begin(), rs.end(),
-                   std::insert_iterator<std::set<size_t>>(diff, diff.begin()));
+                   std::insert_iterator<decltype(ls)>(diff, diff.begin()));
 
     QueryResult ret(tq.text, rep(), diff);
     return ret;
@@ -18,5 +18,5 @@ QueryResult OrQuery::eval(TextQuery &tq) const
 
 std::string OrQuery::rep() const
 {
-    return left.rep() + " | " + right.rep();
+    return left.rep() + " " + op + " " + right.rep();
 };
