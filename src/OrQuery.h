@@ -5,12 +5,14 @@
 
 class OrQuery : public BinaryQuery
 {
-  private:
-    /* data */
-  public:
-    OrQuery(/* args */);
 
-    ~OrQuery();
+  public:
+    OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r){};
+
+    ~OrQuery(){};
+
+    QueryResult eval(TextQuery &tq) const override;
+    std::string rep() const override;
 };
 
 #endif // ORQUERY_H

@@ -10,6 +10,7 @@ class TextQuery
 {
   friend class WordQuery;
   friend class NoQuery;
+  friend class OrQuery;
 
 private:
   std::shared_ptr<std::vector<std::string>> text;

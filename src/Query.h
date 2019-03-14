@@ -14,6 +14,7 @@ private:
 
 public:
   Query(const std::string &s) : query(std::make_shared<WordQuery>(s)){};
+  Query() : query(nullptr){};
   ~Query(){};
 
   Query(const Query &q) : query(q.query){};
@@ -25,7 +26,7 @@ public:
 
   // ops
   Query &operator~() const &;
-  // Query &operator|(const Query &rhs) const &;
+  Query &operator|(const Query &rhs) const &;
 };
 
 #endif // QUERY_H
