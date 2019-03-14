@@ -27,13 +27,11 @@ release: CFLAGS := -D NDEBUG $(CFLAGS)
 release: build
 debug: CFLAGS := -g $(CFLAGS)
 debug: build
-build: $(OBJS)
+build: $(PREFIX) $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(EXECUTABLE)
 
-# seems line below make recompiling all files
-# $(OBJS): | $(PREFIX)  # create PREFIX path if not exists
 $(PREFIX):
-	mkdir -p $(PREFIX)
+	mkdir -p $@
 
 DEPS := $(OBJS:.o=.d)
 
