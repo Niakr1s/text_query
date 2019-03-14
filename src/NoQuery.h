@@ -16,6 +16,7 @@ private:
 public:
   // NoQuery(const std::string &s) : word(s){};
   NoQuery(const Query &q) : query(q){};
+
   ~NoQuery(){};
 
   QueryResult eval(TextQuery &tq) const override;

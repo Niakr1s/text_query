@@ -10,13 +10,14 @@
 class Query
 {
 private:
-  std::string word;
   std::shared_ptr<QueryBase> query;
 
 public:
-  Query() : word(""), query(nullptr){};
-  Query(const std::string &s) : word(s), query(std::make_shared<WordQuery>(s)){};
+  Query(const std::string &s) : query(std::make_shared<WordQuery>(s)){};
   ~Query(){};
+
+  Query(const Query &q) : query(q.query){};
+  Query &operator=(const Query &rhs);
 
   // members
   QueryResult eval(TextQuery &tq) const;
