@@ -27,6 +27,7 @@ public:
   // ops
   Query &operator~() const &;
   Query &operator|(const Query &rhs) const &;
+  Query &operator&(const Query &rhs) const &;
 };
 
 #endif // QUERY_H

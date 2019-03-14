@@ -1,6 +1,7 @@
 #include "Query.h"
 #include "NoQuery.h"
 #include "OrQuery.h"
+#include "AndQuery.h"
 
 Query &Query::operator=(const Query &rhs)
 {
@@ -32,7 +33,15 @@ Query &Query::operator~() const &
 Query &Query::operator|(const Query &rhs) const &
 {
     auto ret = new Query();
-    auto or_query = std::make_shared<OrQuery>(*this, rhs);
-    ret->query = or_query;
+    auto q = std::make_shared<OrQuery>(*this, rhs);
+    ret->query = q;
+    return *ret;
+};
+
+Query &Query::operator&(const Query &rhs) const &
+{
+    auto ret = new Query();
+    auto q = std::make_shared<AndQuery>(*this, rhs);
+    ret->query = q;
     return *ret;
 };
