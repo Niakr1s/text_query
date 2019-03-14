@@ -5,14 +5,17 @@
 #include "QueryBase.h"
 #include "QueryResult.h"
 #include "TextQuery.h"
+#include "Query.h"
 
 class NoQuery : public QueryBase
 {
 private:
-  std::string word;
+  Query query;
+  // std::string word;
 
 public:
-  NoQuery(const std::string &s) : word(s){};
+  // NoQuery(const std::string &s) : word(s){};
+  NoQuery(const Query &q) : query(q){};
   ~NoQuery(){};
 
   QueryResult eval(TextQuery &tq) const override;

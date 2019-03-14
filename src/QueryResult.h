@@ -7,6 +7,7 @@
 
 class QueryResult
 {
+  friend class NoQuery;
 
 private:
   std::shared_ptr<std::vector<std::string>> text;

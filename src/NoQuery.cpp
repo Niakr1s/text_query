@@ -2,11 +2,12 @@
 
 QueryResult NoQuery::eval(TextQuery &tq) const
 {
-    QueryResult ret(tq.text, rep(), tq.not_lines(word));
+    auto ls = query.eval(tq);
+    QueryResult ret(tq.text, rep(), tq.negate_lines(ls.lines));
     return ret;
 };
 
 std::string NoQuery::rep() const
 {
-    return "~" + word;
+    return "~" + query.rep();
 };

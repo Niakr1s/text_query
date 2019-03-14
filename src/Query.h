@@ -6,7 +6,6 @@
 #include "QueryResult.h"
 #include "QueryBase.h"
 #include "WordQuery.h"
-#include "Query.h"
 
 class Query
 {
@@ -15,6 +14,7 @@ private:
   std::shared_ptr<QueryBase> query;
 
 public:
+  Query() : word(""), query(nullptr){};
   Query(const std::string &s) : word(s), query(std::make_shared<WordQuery>(s)){};
   ~Query(){};
 

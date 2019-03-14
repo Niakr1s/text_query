@@ -30,7 +30,8 @@ debug: build
 build: $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(EXECUTABLE)
 
-$(OBJS): | $(PREFIX)  # create PREFIX path if not exists
+# seems line below make recompiling all files
+# $(OBJS): | $(PREFIX)  # create PREFIX path if not exists
 $(PREFIX):
 	mkdir -p $(PREFIX)
 
