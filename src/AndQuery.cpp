@@ -18,5 +18,5 @@ QueryResult AndQuery::eval(TextQuery &tq) const
 
 std::string AndQuery::rep() const
 {
-    return left.rep() + " " + op + " " + right.rep();
+    return "( " + left.rep() + " " + op + " " + right.rep() + " )";
 };

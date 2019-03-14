@@ -18,5 +18,7 @@ int main(int argc, char *argv[])
     (Query("motor") | Query("desert")).eval(tq).print();
     (Query("motor") & Query("desert")).eval(tq).print();
 
+    ((~Query("motor") | (Query("desert") & Query("desert"))) | Query("tank")).eval(tq).print();
+
     return 0;
 }
