@@ -4,7 +4,7 @@
 
 void QueryResult::print()
 {
-    std::cout << "Result for " << name << ":\n";
+    std::cout << "\nResult for " << name << ":\n";
     for (auto &i : lines)
         std::cout << "Line no " << i << ": " << (*text)[i] << "\n";
 };
