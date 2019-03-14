@@ -12,6 +12,8 @@ public:
 
   ~AndQuery(){};
 
+  friend Query &Query::operator&(const Query &rhs) const &;
+
   QueryResult eval(TextQuery &tq) const override;
   std::string rep() const override;
 };

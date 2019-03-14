@@ -7,8 +7,6 @@
 
 class BinaryQuery : public QueryBase
 {
-  friend class Query;
-
 protected:
   Query left;
   Query right;

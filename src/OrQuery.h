@@ -5,15 +5,17 @@
 
 class OrQuery : public BinaryQuery
 {
-    std::string op;
+  std::string op;
 
-  public:
-    OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r), op("|"){};
+public:
+  OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r), op("|"){};
 
-    ~OrQuery(){};
+  ~OrQuery(){};
 
-    QueryResult eval(TextQuery &tq) const override;
-    std::string rep() const override;
+  friend Query &Query::operator|(const Query &rhs) const &;
+
+  QueryResult eval(TextQuery &tq) const override;
+  std::string rep() const override;
 };
 
 #endif // ORQUERY_H
