@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <set>
+#include <string>
 
 class QueryResult
 {
