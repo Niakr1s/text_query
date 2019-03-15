@@ -41,6 +41,11 @@ Query::Query(std::string &&s) : query(nullptr) {
         }
         if (depth < 0) throw std::runtime_error("Wrong braces in input");
     }
+    if (s[0] == '~') {
+        s.erase(0);
+        query = std::make_shared<NoQuery>(s);
+        return;
+    }
     query = std::make_shared<WordQuery>(s);
 };
 
