@@ -41,6 +41,7 @@ Query::Query(std::string &&s) : query(nullptr) {
         }
         if (depth < 0) throw std::runtime_error("Wrong braces in input");
     }
+    query = std::make_shared<WordQuery>(s);
 };
 
 Query &Query::operator=(const Query &rhs) {
