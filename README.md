@@ -1,4 +1,4 @@
-# Text Query
+# Simple Text Query in OOP Paradigm
 
 It's *paragraph* 15.9. *"Text Queries Revisited"* from book *"C++ Primer"*, implemented by myself. I've got much fun while writint this! :)
 
