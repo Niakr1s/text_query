@@ -1,18 +1,17 @@
 #if !defined(WORDQUERY_H)
 #define WORDQUERY_H
 
-#include <string>
 #include <memory>
+#include <string>
 #include "QueryBase.h"
 #include "QueryResult.h"
 #include "TextQuery.h"
 
-class WordQuery : public QueryBase
-{
-  private:
+class WordQuery : public QueryBase {
+   private:
     std::string word;
 
-  public:
+   public:
     WordQuery(const std::string &s) : word(s){};
     ~WordQuery(){};
 
@@ -20,4 +19,4 @@ class WordQuery : public QueryBase
     std::string rep() const override;
 };
 
-#endif // WORDQUERY_H
+#endif  // WORDQUERY_H

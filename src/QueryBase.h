@@ -5,14 +5,13 @@
 #include "QueryResult.h"
 #include "TextQuery.h"
 
-class QueryBase
-{
-public:
-  friend class Query;
-  virtual ~QueryBase() = default;
+class QueryBase {
+   public:
+    friend class Query;
+    virtual ~QueryBase() = default;
 
-  virtual QueryResult eval(TextQuery &tq) const = 0;
-  virtual std::string rep() const = 0;
+    virtual QueryResult eval(TextQuery &tq) const = 0;
+    virtual std::string rep() const = 0;
 };
 
-#endif // QUERYBASE_H
+#endif  // QUERYBASE_H
