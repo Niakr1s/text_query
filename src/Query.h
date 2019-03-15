@@ -2,16 +2,14 @@
 #define QUERY_H
 
 #include <string>
-#include <utility>
 #include "QueryBase.h"
 #include "QueryResult.h"
 #include "TextQuery.h"
-#include "WordQuery.h"
+#include "strUtility.h"
 
 class Query {
    private:
     std::shared_ptr<QueryBase> query;
-    std::shared_ptr<QueryBase> parse(std::string &s);
 
    public:
     Query(std::string &&s) : query(parse(s)){};
@@ -30,10 +28,5 @@ class Query {
     Query &operator|(const Query &rhs) const &;
     Query &operator&(const Query &rhs) const &;
 };
-
-void remove_spaces(std::string &s);
-bool remove_outer_braces(std::string &s);
-std::pair<std::string, std::string> split_string(
-    const std::string &s, std::string::const_iterator it);
 
 #endif  // QUERY_H
