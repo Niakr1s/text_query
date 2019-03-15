@@ -6,10 +6,10 @@ int main(int argc, char *argv[]) {
 
     auto m = Query("(|)|\nmotor | swam");
     auto no_m = ~m;
-    m.eval(tq).print();
-    no_m.eval(tq).print();
+    std::cout << m.eval(tq);
+    std::cout << no_m.eval(tq);
     auto new_q = m | Query("which");
-    new_q.eval(tq).print();
+    std::cout << new_q.eval(tq);
 
     return 0;
 }

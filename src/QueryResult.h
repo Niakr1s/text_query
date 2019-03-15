@@ -1,6 +1,7 @@
 #if !defined(QUERYRESULT_H)
 #define QUERYRESULT_H
 
+#include <iostream>
 #include <memory>
 #include <set>
 #include <string>
@@ -22,7 +23,9 @@ class QueryResult {
         : text(t), name(s), lines(l){};
     ~QueryResult(){};
 
-    void print();
+    friend std::ostream &operator<<(std::ostream &out, const QueryResult &qr);
 };
+
+std::ostream &operator<<(std::ostream &out, const QueryResult &qr);
 
 #endif  // QUERYRESULT_H
