@@ -2,14 +2,46 @@
 
 #include <algorithm>
 #include <cctype>
+#include <exception>
+#include <iostream>
 #include "AndQuery.h"
 #include "NoQuery.h"
 #include "OrQuery.h"
 
-Query::Query(const std::string &s)
-    : query(nullptr){
+Query::Query(std::string &&s) : query(nullptr) {
+    remove_spaces(s);
+    while (remove_outer_braces(s))
+        ;
+    std::cout << "\nGot string : \"" << s << "\"\n";
+    int depth = 0;
 
-      };
+    for (auto it = s.begin(); it != s.end(); ++it) {
+        switch (*it) {
+            case '(':
+                ++depth;
+                break;
+            case ')':
+                --depth;
+                break;
+            case '&':
+                if (depth == 0) {
+                    auto p = split_string(s, it);
+                    query = std::make_shared<AndQuery>(p.first, p.second);
+                    return;
+                }
+                break;
+            case '|': {
+                if (depth == 0) {
+                    auto p = split_string(s, it);
+                    query = std::make_shared<OrQuery>(p.first, p.second);
+                    return;
+                }
+                break;
+            }
+        }
+        if (depth < 0) throw std::runtime_error("Wrong braces in input");
+    }
+};
 
 Query &Query::operator=(const Query &rhs) {
     query = rhs.query;
@@ -67,3 +99,8 @@ bool remove_outer_braces(std::string &s) {
     s.erase(s.begin());
     return true;
 }
+
+std::pair<std::string, std::string> split_string(
+    const std::string &s, std::string::const_iterator it) {
+    return {std::string(s.begin(), it), std::string(it + 1, s.end())};
+};

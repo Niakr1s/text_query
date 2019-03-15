@@ -3,19 +3,20 @@
 
 #include "BinaryQuery.h"
 
-class OrQuery : public BinaryQuery
-{
-  std::string op;
+class OrQuery : public BinaryQuery {
+    std::string op;
 
-public:
-  OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r), op("|"){};
+   public:
+    OrQuery(const Query &l, const Query &r) : BinaryQuery(l, r), op("|"){};
+    OrQuery(const std::string &l, const std::string &r)
+        : BinaryQuery(l, r), op("|"){};
 
-  ~OrQuery(){};
+    ~OrQuery(){};
 
-  friend Query &Query::operator|(const Query &rhs) const &;
+    friend Query &Query::operator|(const Query &rhs) const &;
 
-  QueryResult eval(TextQuery &tq) const override;
-  std::string rep() const override;
+    QueryResult eval(TextQuery &tq) const override;
+    std::string rep() const override;
 };
 
-#endif // ORQUERY_H
+#endif  // ORQUERY_H

@@ -2,6 +2,7 @@
 #define QUERY_H
 
 #include <string>
+#include <utility>
 #include "QueryBase.h"
 #include "QueryResult.h"
 #include "TextQuery.h"
@@ -12,7 +13,7 @@ class Query {
     std::shared_ptr<QueryBase> query;
 
    public:
-    Query(const std::string &s);
+    Query(std::string &&s);
     Query() : query(nullptr){};
     ~Query(){};
 
@@ -31,5 +32,7 @@ class Query {
 
 void remove_spaces(std::string &s);
 bool remove_outer_braces(std::string &s);
+std::pair<std::string, std::string> split_string(
+    const std::string &s, std::string::const_iterator it);
 
 #endif  // QUERY_H

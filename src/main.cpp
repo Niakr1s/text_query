@@ -50,12 +50,7 @@ void parse(std::string &s) {
 };
 
 int main(int argc, char *argv[]) {
-    // std::string s1("(a & b) | (c | d)");
-    // std::string s2("((((a & b) | c)))");
-    // parse(s1);
-    // parse(s2);
-
-    // TextQuery tq("text.txt");
+    TextQuery tq("text.txt");
     // Query("motor").eval(tq).print();
     // (~Query("motor")).eval(tq).print();
     // Query("desert").eval(tq).print();
