@@ -5,12 +5,12 @@ It's *paragraph* 15.9. *"Text Queries Revisited"* from book *"C++ Primer"*, impl
 In addition I implemented parsing incoming text in Query class, so you can print something like this...
 ```c++
 TextQuery tq = TextQuery("file.txt");
-Query("(a | b) & c").eval(tq).print();
+std::cout << Query("(a | b) & c").eval(tq)
 ```
 
 or even more!
 ```c++
 TextQuery tq = TextQuery("file.txt");
-Query q = ~Query("(a | b) & c") | Query("~d | e);
-q.eval(tq).print();
+Query q = ~Query("(a | b) & c") | Query("~d | e");
+std::cout << q.eval(tq);
 ```
