@@ -11,9 +11,10 @@
 class Query {
    private:
     std::shared_ptr<QueryBase> query;
+    std::shared_ptr<QueryBase> parse(std::string &s);
 
    public:
-    Query(std::string &&s);
+    Query(std::string &&s) : query(parse(s)){};
     Query() : query(nullptr){};
     ~Query(){};
 

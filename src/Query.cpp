@@ -8,11 +8,11 @@
 #include "NoQuery.h"
 #include "OrQuery.h"
 
-Query::Query(std::string &&s) : query(nullptr) {
+std::shared_ptr<QueryBase> Query::parse(std::string &s) {
     remove_spaces(s);
     while (remove_outer_braces(s))
         ;
-    std::cout << "\nGot string : \"" << s << "\"\n";
+    // std::cout << "\nGot string : \"" << s << "\"\n";  // for debug
     int depth = 0;
 
     for (auto it = s.begin(); it != s.end(); ++it) {
@@ -26,15 +26,13 @@ Query::Query(std::string &&s) : query(nullptr) {
             case '&':
                 if (depth == 0) {
                     auto p = split_string(s, it);
-                    query = std::make_shared<AndQuery>(p.first, p.second);
-                    return;
+                    return std::make_shared<AndQuery>(p.first, p.second);
                 }
                 break;
             case '|': {
                 if (depth == 0) {
                     auto p = split_string(s, it);
-                    query = std::make_shared<OrQuery>(p.first, p.second);
-                    return;
+                    return std::make_shared<OrQuery>(p.first, p.second);
                 }
                 break;
             }
@@ -42,11 +40,11 @@ Query::Query(std::string &&s) : query(nullptr) {
         if (depth < 0) throw std::runtime_error("Wrong braces in input");
     }
     if (s[0] == '~') {
-        s.erase(0);
-        query = std::make_shared<NoQuery>(s);
-        return;
+        s.erase(s.begin());
+        std::cout << "~s: " << s << "\n";
+        return std::make_shared<NoQuery>(s);
     }
-    query = std::make_shared<WordQuery>(s);
+    return std::make_shared<WordQuery>(s);
 };
 
 Query &Query::operator=(const Query &rhs) {

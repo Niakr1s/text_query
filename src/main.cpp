@@ -52,14 +52,10 @@ void parse(std::string &s) {
 int main(int argc, char *argv[]) {
     TextQuery tq("text.txt");
 
-    Query("motor | ~desert").eval(tq).print();
-    // (~Query("motor")).eval(tq).print();
-    // Query("desert").eval(tq).print();
-    // (Query("motor") | Query("desert")).eval(tq).print();
-    // (Query("motor") & Query("desert")).eval(tq).print();
-
-    // ((~Query("motor") | (Query("desert") & Query("desert"))) |
-    // Query("tank")).eval(tq).print();
+    auto m = Query("(|)|\nmotor | swam");
+    auto no_m = ~m;
+    m.eval(tq).print();
+    no_m.eval(tq).print();
 
     return 0;
 }
